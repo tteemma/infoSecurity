@@ -133,7 +133,7 @@ $ npm run lint
 Process exited with code 0. Предупреждений и ошибок не найдено.
 ```
 
-![Отчёт SAST](docs/screenshots/sast-report.png)
+![Отчёт SAST](screenshots/sast-report.png)
 
 #### 6.2 Результат локального SCA
 
@@ -142,11 +142,11 @@ $ npm audit --audit-level=high
 found 0 vulnerabilities
 ```
 
-![Отчёт SCA](docs/screenshots/sca-report.png)
+![Отчёт SCA](screenshots/sca-report.png)
 
 Те же команды успешно выполнены GitHub Actions в pipeline № 2:
 
-![Успешный GitHub Actions pipeline](docs/screenshots/actions-success.png)
+![Успешный GitHub Actions pipeline](screenshots/actions-success.png)
 
 ### 7. Тестирование
 
@@ -183,7 +183,7 @@ fail 0
 ### 9. Ссылки
 
 - Публичный репозиторий: https://github.com/tteemma/infoSecurity
-- Последний успешный pipeline: https://github.com/tteemma/infoSecurity/actions/runs/35531012781
+- Последний успешный pipeline: https://github.com/tteemma/infoSecurity/actions/workflows/ci.yml?query=branch%3Amain+is%3Asuccess
 
 ### 10. Вывод
 
