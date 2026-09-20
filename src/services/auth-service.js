@@ -1,8 +1,13 @@
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+
+const DUMMY_PASSWORD_HASH = '$2b$12$tUx.dKuZyC5Mi5JEeT49Me5rwX.6iy6AtBgerPk5/WuCVt3W6UFp6';
 
 class AuthService {
-  constructor(userRepository) {
+  constructor(userRepository, { jwtSecret, jwtExpiresIn }) {
     this.userRepository = userRepository;
+    this.jwtSecret = jwtSecret;
+    this.jwtExpiresIn = jwtExpiresIn;
   }
 
   async ensureUser(login, password) {
@@ -15,10 +20,23 @@ class AuthService {
 
   async authenticate(login, password) {
     const user = this.userRepository.findByLogin(login);
-    if (!user) return null;
+    const passwordHash = user?.password_hash || DUMMY_PASSWORD_HASH;
+    const passwordMatches = await bcrypt.compare(password, passwordHash);
 
-    const passwordMatches = await bcrypt.compare(password, user.password_hash);
-    return passwordMatches ? { id: user.id, login: user.login } : null;
+    if (!user || !passwordMatches) return null;
+    return { id: user.id, login: user.login };
+  }
+
+  issueToken(user) {
+    return jwt.sign(
+      { sub: String(user.id), login: user.login },
+      this.jwtSecret,
+      { expiresIn: this.jwtExpiresIn, algorithm: 'HS256' },
+    );
+  }
+
+  verifyToken(token) {
+    return jwt.verify(token, this.jwtSecret, { algorithms: ['HS256'] });
   }
 }
 
