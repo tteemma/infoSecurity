@@ -6,7 +6,7 @@
 [![CI Security](https://github.com/tteemma/infoSecurity/actions/workflows/ci.yml/badge.svg)](https://github.com/tteemma/infoSecurity/actions/workflows/ci.yml)
 
 - Публичный репозиторий: <https://github.com/tteemma/infoSecurity>
-- Последний успешный pipeline: <https://github.com/tteemma/infoSecurity/actions/runs/35531012781>
+- Последний успешный pipeline: <https://github.com/tteemma/infoSecurity/actions/workflows/ci.yml?query=branch%3Amain+is%3Asuccess>
 
 ## Возможности API
 
@@ -142,4 +142,4 @@ middleware — за контроль доступа. Зависимости пе
 - PDF-отчёт: `docs/report.pdf`.
 - Ответы на контрольные вопросы: `docs/control-questions.md`.
 - Публичный репозиторий: <https://github.com/tteemma/infoSecurity>.
-- Успешный pipeline: <https://github.com/tteemma/infoSecurity/actions/runs/35531012781>.
+- Последний успешный pipeline: <https://github.com/tteemma/infoSecurity/actions/workflows/ci.yml?query=branch%3Amain+is%3Asuccess>.
