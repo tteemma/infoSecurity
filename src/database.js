@@ -1,15 +1,16 @@
-const fs = require('node:fs');
-const path = require('node:path');
-const { DatabaseSync } = require('node:sqlite');
+const fs = require('node:fs')
+const path = require('node:path')
+const { DatabaseSync } = require('node:sqlite')
 
 class Database {
   constructor(filename) {
     if (filename !== ':memory:') {
-      fs.mkdirSync(path.dirname(filename), { recursive: true });
+      fs.mkdirSync(path.dirname(filename), { recursive: true })
     }
 
-    this.connection = new DatabaseSync(filename);
-    this.connection.exec('PRAGMA foreign_keys = ON');
+    this.connection = new DatabaseSync(filename)
+    //включает проверку внешних ключей SQLite. Нельзя создать пост от имени несуществующего пользователя.
+    this.connection.exec('PRAGMA foreign_keys = ON')
   }
 
   initialize() {
@@ -28,12 +29,12 @@ class Database {
         created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (author_id) REFERENCES users(id)
       );
-    `);
+    `)
   }
 
   close() {
-    this.connection.close();
+    this.connection.close()
   }
 }
 
-module.exports = { Database };
+module.exports = { Database }
