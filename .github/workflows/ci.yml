@@ -1,0 +1,35 @@
+name: CI Security
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test-and-scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Получить код
+        uses: actions/checkout@v4
+
+      - name: Установить Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Установить зависимости
+        run: npm ci
+
+      - name: Запустить тесты
+        run: npm test
+
+      - name: SAST — ESLint Security
+        run: npm run lint
+
+      - name: SCA — npm audit
+        run: npm audit --audit-level=high
