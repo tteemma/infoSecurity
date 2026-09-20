@@ -3,6 +3,11 @@
 Учебный REST API на JavaScript: Express, SQLite, JWT, bcrypt и автоматические
 проверки безопасности в GitHub Actions.
 
+[![CI Security](https://github.com/tteemma/infoSecurity/actions/workflows/ci.yml/badge.svg)](https://github.com/tteemma/infoSecurity/actions/workflows/ci.yml)
+
+- Публичный репозиторий: <https://github.com/tteemma/infoSecurity>
+- Последний успешный pipeline: <https://github.com/tteemma/infoSecurity/actions/runs/35531012781>
+
 ## Возможности API
 
 | Метод | Путь | Назначение | Доступ |
@@ -100,6 +105,20 @@ XSS-экранирование и bcrypt-хэш. ESLint Security выполня�
 Workflow [`.github/workflows/ci.yml`](.github/workflows/ci.yml) запускает все
 проверки при каждом `push` и `pull_request`.
 
+### Результаты GitHub Actions
+
+Успешный запуск всего pipeline:
+
+![Успешный GitHub Actions pipeline](docs/screenshots/actions-success.png)
+
+SAST — ESLint Security завершён без ошибок и предупреждений:
+
+![Отчёт SAST](docs/screenshots/sast-report.png)
+
+SCA — `npm audit` не обнаружил известных уязвимостей:
+
+![Отчёт SCA](docs/screenshots/sca-report.png)
+
 ## Структура
 
 ```text
@@ -122,5 +141,5 @@ middleware — за контроль доступа. Зависимости пе
 
 - PDF-отчёт: `docs/report.pdf`.
 - Ответы на контрольные вопросы: `docs/control-questions.md`.
-- Публичная ссылка и ссылка на успешный Actions run добавляются после публикации
-  репозитория в GitHub.
+- Публичный репозиторий: <https://github.com/tteemma/infoSecurity>.
+- Успешный pipeline: <https://github.com/tteemma/infoSecurity/actions/runs/35531012781>.
